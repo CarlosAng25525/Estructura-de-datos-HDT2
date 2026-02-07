@@ -1,0 +1,21 @@
+/**
+ * Interfaz que define el comportamiento de una calculadora
+ * capaz de evaluar expresiones en notación Postfix.
+ *
+ * @author Maxzadi
+ * @version 1.0
+ */
+public interface CalculadoraPostFix {
+
+    /**
+     * Evalúa una expresión en notación Postfix.
+     *
+     * @param exp expresión en formato Postfix separada por espacios.
+     * @return resultado entero de la evaluación.
+     *
+     * @throws IllegalArgumentException si la expresión es inválida.
+     * @pre exp != null
+     * @post retorna el resultado final de la expresión.
+     */
+    public int evaluar(String exp);
+}
