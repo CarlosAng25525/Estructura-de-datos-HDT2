@@ -1,0 +1,51 @@
+/**
+ * Interfaz que define el comportamiento de una estructura
+ * de datos tipo Pila (Stack).
+ *
+ * Sigue el principio LIFO (Last In, First Out),
+ * donde el último elemento en entrar es el primero en salir.
+ *
+ * @param <T> Tipo de dato almacenado en la pila.
+ *
+ * @author Maxzadi
+ * @version 1.0
+ */
+public interface Stack<T> {
+
+    /**
+     * Inserta un elemento en la parte superior de la pila.
+     *
+     * @param element elemento a agregar.
+     * @pre element != null
+     * @post el tamaño de la pila aumenta en uno.
+     */
+    void push(T element);
+
+    /**
+     * Elimina y devuelve el elemento ubicado en la cima de la pila.
+     *
+     * @return elemento removido.
+     * @throws RuntimeException si la pila está vacía.
+     * @pre la pila no debe estar vacía.
+     * @post el tamaño de la pila disminuye en uno.
+     */
+    T pop();
+
+    /**
+     * Devuelve el elemento ubicado en la cima sin eliminarlo.
+     *
+     * @return elemento superior de la pila.
+     * @throws RuntimeException si la pila está vacía.
+     * @pre la pila no debe estar vacía.
+     * @post la pila permanece sin cambios.
+     */
+    T peek();
+
+    /**
+     * Devuelve la cantidad de elementos almacenados en la pila.
+     *
+     * @return número actual de elementos.
+     * @post el valor retornado es mayor o igual a cero.
+     */
+    int size();
+}
