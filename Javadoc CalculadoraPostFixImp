@@ -1,0 +1,96 @@
+/**
+ * Implementación de una calculadora que evalúa
+ * expresiones en notación Postfix.
+ *
+ * Utiliza una pila de enteros para realizar los cálculos
+ * siguiendo el principio LIFO.
+ *
+ * Soporta los operadores: +, -, *, /
+ *
+ * @author Maxzadi
+ * @version 1.0
+ */
+public class CalculadoraPostFixImp implements CalculadoraPostFix {
+
+    /**
+     * Pila utilizada para almacenar operandos
+     * y resultados parciales durante la evaluación.
+     */
+    private Stack<Integer> pila = new VectorStack<>();
+
+    /**
+     * Constructor por defecto.
+     *
+     * @post Se inicializa una nueva pila vacía.
+     */
+    public CalculadoraPostFixImp() {
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @throws ArithmeticException si ocurre división entre cero.
+     * @throws NumberFormatException si se encuentra un carácter no numérico.
+     */
+    public int evaluar(String exp) {
+
+        for (int i = 0; i < exp.length(); i++) {
+
+            String c = String.valueOf(exp.charAt(i));
+
+            if (c.equals(" ")) {
+                continue;
+            } else if (esOperador(c)) {
+
+                int b = pila.pop();
+                int a = pila.pop();
+                pila.push(aplicarOperacion(a, b, c));
+
+            } else {
+                pila.push(Integer.parseInt(c));
+            }
+        }
+
+        return pila.pop();
+    }
+
+    /**
+     * Determina si un token es un operador válido.
+     *
+     * @param token símbolo a evaluar.
+     * @return true si es +, -, * o /.
+     */
+    private boolean esOperador(String token) {
+        return token.equals("+") ||
+               token.equals("-") ||
+               token.equals("*") ||
+               token.equals("/");
+    }
+
+    /**
+     * Aplica la operación aritmética correspondiente.
+     *
+     * @param a primer operando.
+     * @param b segundo operando.
+     * @param op operador.
+     * @return resultado de la operación.
+     *
+     * @throws ArithmeticException si hay división entre cero.
+     * @throws IllegalArgumentException si el operador no es válido.
+     */
+    private int aplicarOperacion(int a, int b, String op) {
+
+        switch (op) {
+            case "+": return a + b;
+            case "-": return a - b;
+            case "*": return a * b;
+            case "/":
+                if (b == 0) {
+                    throw new ArithmeticException("División por cero");
+                }
+                return a / b;
+            default:
+                throw new IllegalArgumentException("Operador inválido");
+        }
+    }
+}
