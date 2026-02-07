@@ -1,0 +1,67 @@
+import java.util.Vector;
+
+/**
+ * Implementación de la interfaz Stack utilizando la clase Vector
+ * como estructura de almacenamiento dinámico.
+ *
+ * Sigue el principio LIFO (Last In, First Out).
+ *
+ * @param <T> Tipo de dato almacenado en la pila.
+ *
+ * @author Maxzadi
+ * @version 1.0
+ */
+public class VectorStack<T> implements Stack<T> {
+
+    /**
+     * Estructura interna que almacena los elementos de la pila.
+     */
+    private Vector<T> pila = new Vector<>();
+
+    /**
+     * Constructor que crea una pila vacía.
+     *
+     * @post La pila se inicializa sin elementos.
+     */
+    public VectorStack() {
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void push(T element) {
+        pila.addElement(element);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public T pop() {
+        T dato = pila.lastElement();
+        pila.removeElementAt(size() - 1);
+        return dato;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public T peek() {
+        return pila.lastElement();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public int size() {
+        return pila.size();
+    }
+
+    /**
+     * Indica si la pila está vacía.
+     *
+     * @return true si no contiene elementos.
+     */
+    public boolean isEmpty() {
+        return pila.size() == 0;
+    }
+}
