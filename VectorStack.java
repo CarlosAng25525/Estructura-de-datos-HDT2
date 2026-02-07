@@ -3,13 +3,17 @@ import java.util.Vector;
 public class VectorStack<T> implements Stack<T> {
     Vector<T> pila = new Vector<>();
 
+    public VectorStack(){
+
+    }
+
     public void push(T element){
         pila.addElement(element);
     };
 
     public T pop(){
         T dato = pila.lastElement();
-        pila.removeElementAt(-1);
+        pila.removeElementAt(size()-1);
         return dato;
     };
     public T peek(){
