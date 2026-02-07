@@ -1,0 +1,24 @@
+/**
+ * Clase principal que ejecuta la calculadora Postfix.
+ *
+ * Crea una instancia de la calculadora y evalúa
+ * una expresión de ejemplo.
+ *
+ * @author Maxzadi
+ * @version 1.0
+ */
+public class Main {
+
+    /**
+     * Método principal del programa.
+     *
+     * @param args argumentos de línea de comandos (no utilizados).
+     *
+     * @post Se imprime en consola el resultado
+     *       o se lanza una excepción en caso de error matemático.
+     */
+    public static void main(String[] args) {
+        CalculadoraPostFix calc = new CalculadoraPostFixImp();
+        System.out.println(calc.evaluar("1 0 /"));
+    }
+}
